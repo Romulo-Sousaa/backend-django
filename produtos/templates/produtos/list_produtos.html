@@ -1,0 +1,49 @@
+{% extends 'produtos/base.html' %}
+{% block content %}
+<h1>Lista de Produtos</h1>
+<a href="{% url 'cria_produto' %}">Novo Produto</a>
+<ul>
+  {% for p in produtos %}
+    <li>
+      {{ p.nome }} - R$ {{ p.preco }}
+      [<a href="{% url 'edita_produto' p.pk %}">Editar</a>]
+      [<a href="{% url 'remove_produto' p.pk %}">Remover</a>]
+      [<a href="{% url 'detalhe_produto' p.pk %}">Detalhe</a>]
+    </li>
+  {% empty %}
+    <li>Nenhum produto cadastrado.</li>
+  {% endfor %}
+</ul>
+
+<h1>Lista de Clientes</h1>
+<a href="{% url 'cria_cliente' %}">Novo Cliente</a>
+<ul>
+  {% for p in clientes %}
+    <li>
+      {{ p.nome }} - {{ p.email }}
+      [<a href="{% url 'edita_cliente' p.pk %}">Editar</a>]
+      [<a href="{% url 'remove_cliente' p.pk %}">Remover</a>]
+    </li>
+  {% empty %}
+    <li>Nenhum cliente cadastrado.</li>
+  {% endfor %}
+</ul>
+
+  <h1>Lista de Venda</h1>
+  <a href="{% url 'cria_venda' %}">Nova Venda</a>
+  <ul>
+    {% for p in vendas %}
+      <li>
+        {{ p.produto }} - {{ p.cliente }}
+        [<a href="{% url 'edita_venda' p.pk %}">Editar</a>]
+        [<a href="{% url 'remove_venda' p.pk %}">Remover</a>]
+      </li>
+    {% empty %}
+      <li>Nenhuma venda cadastrada.</li>
+    {% endfor %}
+  </ul>
+
+  <h1>Lista completa de vendas</h1>
+  <a href="{% url 'venda_list' %}"><h2>Clique aqui para detalhes</h2></a>
+{% endblock %}
+

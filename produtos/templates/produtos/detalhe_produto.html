@@ -1,0 +1,13 @@
+{% extends 'produtos/base.html' %}
+{% block content %}
+
+<h1>Detalhes produto</h1>
+<p>{{produto.nome}}</p>
+<p>R${{produto.preco}}</p>
+<p>{{produto.descricao}}</p>
+<p>{{produto.estoque}}</p>
+
+<br>
+<a href="{% url 'lista_produtos' %}"> voltar </a>
+
+{%endblock%}
